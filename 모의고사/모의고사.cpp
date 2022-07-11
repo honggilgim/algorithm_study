@@ -1,4 +1,4 @@
-﻿#include <string>
+﻿/*#include <string>
 #include <vector>
 
 using namespace std;
@@ -68,5 +68,30 @@ vector<int> solution(vector<int> answers) {
         answer.push_back(2);
         answer.push_back(3);
     }
+    return answer;
+}
+*/
+
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+vector<int> solution(vector<int> answers) {
+    vector<int> answer;
+    vector <int> one{ 1,2,3,4,5 };
+    vector <int> two{ 2,1,2,3,2,4,2,5 };
+    vector <int> three{ 3,3,1,1,2,2,4,4,5,5 };
+    vector <int> count = { 0,0,0 };
+    for (int i = 0; i < answers.size(); i++)
+    {
+        if (answers[i] == one[i % one.size()]) count[0]++;
+        if (answers[i] == two[i % two.size()]) count[1]++;
+        if (answers[i] == three[i % three.size()]) count[2]++;
+    }
+
+    int max = *max_element(count.begin(), count.end());
+    for (int i = 0; i < 3; i++)
+        if (max == count[i]) answer.push_back(i + 1);
     return answer;
 }
