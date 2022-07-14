@@ -4,7 +4,6 @@
 
 using namespace std;
 
-int Max_size;
 int dx[] = { 0,0,1,-1 };
 int dy[] = { 1,-1,0,0 };
 bool Visit[100][100];
