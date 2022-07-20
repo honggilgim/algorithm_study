@@ -90,17 +90,19 @@ int main()
 	
 	int k;
 	k = check[N - 1][M - 1];
-	cout << k;
+	cout << k << "\n";
+
+	cout << "check 배열 \n";
 	
-	/*for (int i = 0; i < N; i++)
+	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < M; j++)
 		{
-			cout << check[i][j];
+			cout << check[i][j] << "   ";
 		}
 		cout << "\n";
 	}
-	*/
+	
 	
 	return 0;
 
