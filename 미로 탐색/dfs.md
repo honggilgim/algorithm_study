@@ -1,4 +1,4 @@
-/*
+```
 bool visited[MAX][MAX];
 int arr[MAX][MAX];
 int dx[4] = { 1,0,-1,0 };
@@ -50,4 +50,6 @@ int main() {
 	return 0;
 
 }
-*/
+```
+
+dfs로 시도했던 문제풀이
