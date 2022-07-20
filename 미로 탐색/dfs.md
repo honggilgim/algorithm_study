@@ -37,9 +37,11 @@ int main() {
 
 	for (int i = 0; i < N; i++)
 	{
+		string s;
+		cin >> s;
 		for (int j = 0; i < M; j++)
 		{
-			cin >> arr[i][j];
+			arr[i][j]; = s[j];
 		}
 	}
 
