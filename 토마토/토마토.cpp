@@ -7,7 +7,6 @@ using namespace std;
 
 int M, N;
 int map[MAX][MAX];
-int map2[MAX][MAX];
 int cot;
 vector<int> answer;
 int dx[4] = { 1,0,-1,0 };
@@ -28,25 +27,23 @@ void bfs()
 			int nx = x + dx[i];
 			int ny = y + dy[i];
 
-			if (nx >= 0 && nx < M && ny >= 0 && ny < N && map2[nx][ny] == 0)
+			if (nx >= 0 && nx < N && ny >= 0 && ny < M && map[nx][ny] == 0)
 			{
-				map2[nx][ny] = map2[x][y]+1;
-				cout << "bfs : " << nx << " " << ny << "\n";
+				map[nx][ny] = map[x][y]+1;
 				q.push(make_pair(nx, ny));
 			}
 
 		}
 	}
-	cout << "bfs 종료 \n";
 }
 
 int main()
 {
 	cin >> M >> N;
 
-	for (int i = 0; i < M; i++)
+	for (int i = 0; i < N; i++)
 	{
-		for (int j = 0; j < N; j++)
+		for (int j = 0; j < M; j++)
 		{
 			cin >> map[i][j];
 			if (map[i][j] == 1)
@@ -57,19 +54,25 @@ int main()
 	}
 
 	bfs();
+	/*
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
-			if (map2[i][j] == 0) {
-				printf("-1\n");
-				return 0;
-			}
-			if (cot < map2[i][j]) {
-				cot = map2[i][j];
-			}
-			cout << map2[i][j] << " ";
+			cout << map[i][j] << " ";
 		}
 		cout << "\n";
 	}
-	cout << cot;
+	*/
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			if (map[i][j] == 0) {
+				printf("-1\n");
+				return 0;
+			}
+			if (cot < map[i][j]) {
+				cot = map[i][j];
+			}
+		}
+	}
+	cout << (cot-1);
 	return 0;
 }
