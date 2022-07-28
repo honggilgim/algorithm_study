@@ -7,46 +7,43 @@ using namespace std;
 
 int N, K;
 bool visited[MAX];
-int minv = MAX;
-queue<int> q;
-int cot;
+queue<pair<int,int>> q;
+int ans;
 int maxv;
 
 
 
-void bfs(int a) {
-    maxv = max(N, K);
-    q.push(a);
+void bfs(int a,int b) {
+    q.push(make_pair(a,b));
     visited[a] = true;
     while (!q.empty())
     {
-        a = q.front();
+        int a = q.front().first;
+        int b = q.front().second;
         q.pop();
-        if (a >= 0 && a <= maxv)
+        if (a == K)
         {
-            if (a == K)
-            {
-                if (cot < minv)
-                    minv = cot;
-            }
-            if (visited[(a + 1)] == false)
-            {
-                q.push(a + 1);
-                visited[(a + 1)] = true;
-                cot++;
-            }
-            if (visited[(a - 1)] == false)
-            {
-                q.push(a - 1);
-                visited[(a - 1)] = true;
-                cot++;
-            }
-            if (visited[(2 * a)] == false)
-            {
-                q.push((2 * a));
-                visited[(a - 2)] = true;
-                cot++;
-            }
+            ans = b;
+            break;
+        }
+
+        int a1 = a - 1;
+        int a2 = a + 1;
+        int a3 = a * 2;
+        if (0 <= a1 && !visited[a1])
+        {
+            visited[a1] = true;
+            q.push(make_pair(a1, b + 1));
+        }
+        if (a2 <= K && !visited[a2])
+        {
+            visited[a2] = true;
+            q.push(make_pair(a2, b + 1));
+        }
+        if (a3 <= K+1 && !visited[a3])
+        {
+            visited[a3] = true;
+            q.push(make_pair(a3, b + 1));
         }
     }
 
@@ -57,8 +54,8 @@ int main()
 {
 
     cin >> N >> K;
-    bfs(N);
+    bfs(N,0);
 
-    cout << minv;
-
+    cout << ans;
+    return 0;
 }
