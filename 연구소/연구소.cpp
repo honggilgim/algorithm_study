@@ -22,18 +22,19 @@ void bfs() {
 		for (int j = 0; j < M; j++)
 		{
 			map3[i][j] = map2[i][j];
+			visited[i][j] = false;
 		}
 	}
-	cout << "bfs 전 : \n";
+	//cout << "bfs 전 : \n";
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < M; j++)
 		{
 			if (map3[i][j] == 2)
 				q.push(make_pair(i, j));
-			cout << map3[i][j] << " ";
+			//cout << map3[i][j] << " ";
 		}
-		cout << "\n";
+		//cout << "\n";
 	}
 
 	while (!q.empty())
@@ -56,7 +57,7 @@ void bfs() {
 			}
 		}
 	}
-	cout << "bfs 결과 : \n";
+	//cout << "bfs 결과 : \n";
 	int cnt = 0;
 	for (int i = 0; i < N; i++)
 	{
@@ -64,11 +65,11 @@ void bfs() {
 		{
 			if (map3[i][j] == 0)
 				cnt++;
-			cout << map3[i][j] << " ";
+			//cout << map3[i][j] << " ";
 		}
-		cout << "\n";
+		//cout << "\n";
 	}
-	cout << "cnt 결과 : " << cnt << "\n";
+	//cout << "cnt 결과 : " << cnt << "\n";
 	ans = max(ans, cnt);
 	test++;
 }
@@ -79,7 +80,6 @@ void copy() {
 		for (int j = 0; j < M; j++)
 		{
 			map2[i][j] = map[i][j];
-			visited[i][j] = false;
 		}
 	}
 }
@@ -126,18 +126,9 @@ int main() {
 			}
 		}
 	}
-
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++) {
-			cout << map[i][j] << " ";
-		}
-		cout << "\n";
-	}
-
-
 	cout << ans;
 
-	cout << "bfs 수행 횟수 :" << test;
+	//cout << "bfs 수행 횟수 :" << test;
 
 	return 0;
 
