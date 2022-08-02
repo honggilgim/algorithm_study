@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "구슬 탈출", "구슬 탈출.vcxproj", "{4F37D322-B24D-492A-A8D9-474312CD5688}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Debug|x64.ActiveCfg = Debug|x64
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Debug|x64.Build.0 = Debug|x64
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Debug|x86.ActiveCfg = Debug|Win32
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Debug|x86.Build.0 = Debug|Win32
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Release|x64.ActiveCfg = Release|x64
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Release|x64.Build.0 = Release|x64
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Release|x86.ActiveCfg = Release|Win32
+		{4F37D322-B24D-492A-A8D9-474312CD5688}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {400B6C6F-CED9-4E5C-8CD7-148EE5C8D021}
+	EndGlobalSection
+EndGlobal
