@@ -17,6 +17,7 @@ struct ballindex
 	int ry;
 	int bx;
 	int by;
+	int cot;
 };
 
 queue <ballindex> q;
@@ -38,17 +39,16 @@ int ball(int& x, int& y, int i)
 
 int bfs()
 {
-	int cot = -1;
 	while (!q.empty())
 	{
-		if (cot > 10)
-			return -1;
 		int rx = q.front().rx;
 		int ry = q.front().ry;
 		int bx = q.front().bx;
 		int by = q.front().by;
-		cot++;
-		cout << " rx : " << rx << " ry :" << ry << " bx : " << bx << " by : " << by << "cot : " << cot << "\n";
+		int cot = q.front().cot;
+		if (cot > 9)
+			return -1;
+		//cout << " rx : " << rx << " ry :" << ry << " bx : " << bx << " by : " << by << "cot : " << cot << "\n";
 		q.pop();
 
 		for (int i = 0; i < 4; i++)
@@ -57,19 +57,21 @@ int bfs()
 			int rry = ry;
 			int bbx = bx;
 			int bby = by;
+			int ncot = cot+1;
 			int redmove = 0;
 			int bluemove = 0;
-
+			//cout << "전rrx : " << rrx << " rry : " << rry << "i :  " << i << "\n";
+			//cout << "전bbx : " << bbx << " bby : " << bby << "i :  " << i << "\n\n";
 			redmove = ball(rrx, rry,i);
-			cout << "rrx : " << rrx << "rry : " << rry << "i :  " << i << "\n";
+			//cout << "rrx : " << rrx << " rry : " << rry << "i :  " << i << "\n";
 			bluemove = ball(bbx, bby, i);
-			cout << "bbx : " << bbx << "bby : " << bby << "i :  " << i << "\n\n";
+			//cout << "bbx : " << bbx << " bby : " << bby << "i :  " << i << "\n\n";
 			if (map[bbx][bby] == "O") continue;
 			if (map[rrx][rry] == "O")
 			{
-				cout << rrx << rry << "\n";
-				cout << "성공!";
-				return cot;
+				//cout << rrx << rry << "\n";
+				//cout << "성공!";
+				return ncot;
 			}
 			if (rrx == bbx && rry == bby)
 			{
@@ -87,9 +89,10 @@ int bfs()
 			if (visited[rrx][rry][bbx][bby]) continue;
 			visited[rrx][rry][bbx][bby] = true;
 			
-			q.push({ rrx,rry,bbx,bby });
+			q.push({ rrx,rry,bbx,bby,ncot });
 		}
 	}
+	return -1;
 }
 
 int main() {
@@ -107,29 +110,21 @@ int main() {
 			
 			if (map[i][j] == "R")
 			{
-				rx = j;
-				ry = i;
+				rx = i;
+				ry = j;
 			}
 			if (map[i][j] == "B")
 			{
-				bx = j;
-				by = i;
+				bx = i;
+				by = j;
 			}
 		}
-	}
-
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			cout << map[i][j] << " ";
-		}
-		cout << "\n";
 	}
 
 	//cout << " rx : " << rx << " ry :" << ry << " bx : " << bx << " by : " << by <<"\n";
 
-	q.push({ rx, ry, bx, by });
+	q.push({ rx, ry, bx, by,0 });
+	visited[rx][ry][bx][by] = true;
 	cout << bfs();
 
 	return 0;
