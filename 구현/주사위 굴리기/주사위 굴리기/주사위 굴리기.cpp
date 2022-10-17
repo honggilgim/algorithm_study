@@ -14,7 +14,7 @@ int n, m, x, y, cot;
 int check(int a)
 {
 	if (a == 1 && y == m - 1) return 0;
-	else if (a == 2 && y == 0) if (y == 0) return 0;
+	else if (a == 2 && y == 0) return 0;
 	else if (a == 3 && x == 0) return 0;
 	else if (a == 4 && x == n - 1) return 0;
 	return 1;
@@ -83,15 +83,16 @@ int main() {
 				dice[1] = dice[4];
 				dice[4] = temp;
 			}
+
+			if (map[x][y] == 0) {
+				map[x][y] = dice[1];
+			}
+			else {
+				dice[1] = map[x][y];
+				map[x][y] = 0;
+			}
+			cout << dice[0] << endl;
 		}
-		if (map[x][y] == 0) {
-			map[x][y] = dice[1];
-		}
-		else {
-			dice[1] = map[x][y];
-			map[x][y] = 0;
-		}
-		cout << dice[0] << endl;
 	}
 	return 0;
 
