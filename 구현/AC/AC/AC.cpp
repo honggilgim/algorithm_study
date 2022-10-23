@@ -52,7 +52,7 @@
 					if (dq.empty())
 					{
 						err = true;
-						cout << "err\n";
+						cout << "error\n";
 						break;
 					}
 					else
