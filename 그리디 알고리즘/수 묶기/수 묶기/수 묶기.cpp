@@ -36,31 +36,36 @@ int main() {
 
 	sort(plus.begin(), plus.end());
 	sort(minus.begin(), minus.end());
-	if (plus.size() % 2 != 0)
+	int psize = plus.size();
+	if (psize % 2 == 1)
 		sum.push_back(plus[0]);
 
-	for (int i = (plus.size()-1); i > 0;i-=2)
+	for (int i = (psize -1); i > 0;i-=2)
 	{
-		sum.push_back((plus[i] * plus[i - 1]));
+		int temp = plus[i] * plus[i - 1];
+		sum.push_back(temp);
 	}
+	int msize = minus.size();
 
-	if ((minus.size() % 2) != 0)
+	if ((msize % 2) == 1)
 	{
 		if (zerocount > 0)
 			minus.pop_back();
-		sum.push_back(minus[minus.size() - 1]);
+		else
+			sum.push_back(minus[msize - 1]);
 	}
 
 
-
-	for (int i = 0;i < (minus.size()-1);i -= 2)
+	for (int i = 0;i < (msize -1);i += 2)
 	{
-		sum.push_back((minus[i] * minus[i - 1]));
+		int temp = minus[i] * minus[i + 1];
+		sum.push_back(temp);
 	}
 
 	int ans = 0;
 	for (int i = 0; i < sum.size(); i++)
 		ans += sum[i];
 	cout << ans;
+
 	return 0;
 }
