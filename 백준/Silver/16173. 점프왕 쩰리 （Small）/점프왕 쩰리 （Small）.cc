@@ -21,33 +21,27 @@ int n;
 int dx[] = {1,0};
 int dy[] = {0,1};
 
+bool answer = false;
 
 
-bool bfs(int x,int y) {
-    queue<pair<int,int>> q;
-    visited[x][y] = true;
-    q.push({x,y});
-    while(!q.empty()) {
-        int ax = q.front().first;
-        int ay = q.front().second;
-        q.pop();
+
+void dfs(int x,int y) {
         
-        if(arr[ax][ay] == -1)
-            return true;
-        
-        for(int i=0; i<2; i++) {
-            int nx = ax + dx[i] * arr[ax][ay];
-            int ny = ay + dy[i] * arr[ax][ay];
-            
-            if(nx < n && ny < n && visited[nx][ny] == false) {
-                visited[nx][ny] = true;
-                q.push({nx,ny});
-            }
-        }
-        
+    if(arr[x][y] == -1) {
+        answer = true;
+        return;
     }
     
-    return false;
+    for(int i=0; i<2; i++) {
+        int nx = x + dx[i] * arr[x][y];
+        int ny = y + dy[i] * arr[x][y];
+        
+        if(nx < n && ny < n && visited[nx][ny] == false) {
+            visited[nx][ny] = true;
+            dfs(nx,ny);
+            visited[nx][ny] = false;
+        }
+    }
 }
 
 int main() {
@@ -60,7 +54,8 @@ int main() {
         }
     }
     
-    if(bfs(0,0))
+    dfs(0,0);
+    if(answer)
         cout << "HaruHaru";
     else
         cout << "Hing";
