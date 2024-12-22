@@ -6,9 +6,9 @@ public:
         sort(coins.begin(),coins.end());
         for(int i=1; i<=amount; i++) {
             dp[i] = 2147483640;
-            for(int j=0; j<coins.size();j++) {
-                if((i-coins[j]) < 0) continue;
-                dp[i] = min(dp[i],(dp[i-coins[j]]+1));
+            for(int temp : coins) {
+                if((i-temp) < 0) continue;
+                dp[i] = min(dp[i],(dp[i-temp]+1));
             }
         }
         return dp[amount] == 2147483640 ? -1 : dp[amount];
