@@ -3,7 +3,7 @@ public:
 
     int coinChange(vector<int>& coins, int amount) {
         int dp[10001];
-        sort(coins.begin(),coins.end());
+        //sort(coins.begin(),coins.end());
         for(int i=1; i<=amount; i++) {
             dp[i] = 10001;
             for(int temp : coins) {
